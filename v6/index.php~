@@ -1,0 +1,293 @@
+<?php
+session_start();
+
+require_once("./login.php");
+require_once("./logout.php");
+require_once("./database.php");
+require_once("./action.php");
+
+
+if(isset($_SESSION['id'])){
+
+$company = "SELECT * FROM comp";
+$compresult = mysqli_query($conn, $company);
+$compresult2 = mysqli_query($conn, $company);
+$compresult3 = mysqli_query($conn, $company);
+$buysell = "SELECT * FROM buysell";
+$bsres = mysqli_query($conn, $buysell);
+while($cdet = mysqli_fetch_assoc($compresult3)){
+	$cname[$cdet['id']]=$cdet['name'];
+	$cprice[$cdet['id']]=$cdet['price'];
+}
+
+//--------------------USER LOGGED IN!!
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Welcome, <?php echo $_SESSION['name']; ?>!</title>
+    <link rel='stylesheet' href="css/font.css"  type='text/css'>
+    
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+
+		function Ref() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+		    if (xhttp.readyState == 4 && xhttp.status == 200) {
+		      document.getElementById("stockcontent").innerHTML = xhttp.responseText;
+		      Ref();
+		    }
+		  };
+		  xhttp.open("GET", "prices.php", true);
+		  xhttp.send();
+		}
+		</script>
+
+		<!-- ------------------------INCLUDE IN STYLE.CC -------------------------- -->
+		<style> 
+#user{
+  left:10px;
+  top:10px;
+  background-color:rgba(19, 35, 47, 0.6);
+  color:#fff;
+  padding:10px;
+  border-radius:4px;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.1);
+}
+.mytab2{
+  width:50%;
+  background:rgba(160, 179, 176, 0.25);
+  text-align: center;
+  cursor: pointer;
+  padding:15px;
+  color: #a0b3b0;
+  font-size: 20px;
+  float:left;
+}
+.mytab2:hover, .mytab2-active:hover{
+  background:#179b77;
+  color:#fff;
+}
+.mytab2-active{
+  background:#1ab188;
+  color:#fff;
+  width:50%;
+  text-align: center;
+  cursor: pointer;
+  padding:15px;
+  font-size: 20px;
+  float:left;
+}
+
+		</style>
+    
+  </head>
+
+  <body>
+
+	<div id="user">
+		<form action="./index.php" method="post" >
+			<div id="logout">
+				<input id="logoutbutton" type="submit" name="logout" value="Logout" /><br/>
+			</div>
+		</form>
+		<b><?php echo $_SESSION['name'] ?><br/></b>
+		Balance: <b>Rs. <?php echo $_SESSION['amount'] ?>/-</b><br/>
+		<a href="/balsheet.php">View Balancesheet</a><br/>
+    <?php if($_SESSION['id']==1){ ?><a href="/admin.php">Admin Panel</a><?php } ?>
+	</div>
+
+	<div class="heading">
+	<h1>Wolf of Wallstreet</h1>
+	</div>
+
+  <div class="form">
+  
+  
+  
+  
+      
+	</div> <!-- /form -->
+  
+  
+  <script src="js/first.js"></script>   
+
+  <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
+
+
+<?php }else{ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------USER NOT LOGGED IN!!
+?>
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>Wolf of Wall Street : Login / Signup</title>
+    <link rel='stylesheet' href="css/font.css"  type='text/css'>
+    
+    <link rel="stylesheet" href="css/normalize.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    
+  </head>
+
+  <body>
+
+	<div class="heading">
+	<h1>Wolf of Wallstreet</h1>
+	</div>
+
+    <div class="form">
+      
+      <!--<ul class="tab-group">
+        <li class="tab"><a href="#signup">Sign Up</a></li>
+        <li class="tab active"><a href="#login">Log In</a></li>
+      </ul>-->
+        
+        <div id="login">   
+          <h1>Some tagline to set the mood</h1>
+          <h4 class="formerr"><?php echo $loginerr; ?></h4>
+          
+          <form action="/" method="post">
+          
+            <div class="field-wrap">
+            <label>
+              UserID<span class="req">*</span>
+            </label>
+            <input type="text" name="user" required autocomplete="off"/>
+          </div>
+          
+          <div class="field-wrap">
+            <label>
+              Password<span class="req">*</span>
+            </label>
+            <input type="password" name="password" required autocomplete="off"/>
+          </div>
+          <input type="hidden" name="login" value="Login" />
+          <button class="button button-block"/>Log In</button>
+          
+          </form>
+
+        </div>
+        
+      </div><!-- tab-content -->
+      
+</div> <!-- /form -->
+  <script src="js/first.js"></script>   
+
+  <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
+
+<?php
+};
+?>

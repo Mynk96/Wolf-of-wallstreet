@@ -1,0 +1,22 @@
+User is selling
+bid exists
+user ordered more than the bid
+the bid was deleted
+Taking stocks from the user
+user owns more stocks than what he is selling
+All stocks were taken
+Buyer owns stocks of same price. Updating quantity.
+Take money from buyer
+Give money to seller
+bid exists
+user ordered more than the bid
+the bid was deleted
+Taking stocks from the user
+user owns more stocks than what he is selling
+All stocks were taken
+Buyer owns stocks of same price. Updating quantity.
+Take money from buyer
+Give money to seller
+All bids over. Stocks still left.1
+Updating company price
+Creating new bid
